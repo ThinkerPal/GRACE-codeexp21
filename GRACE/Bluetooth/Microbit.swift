@@ -24,7 +24,7 @@ public class Microbit {
     public func write(_ value: String) {
         guard let writeCharacteristic = writeCharacteristic else { return }
         
-        let data = Data(value.utf8)
+        let data = Data("\(value)\n".utf8)
         peripheral.writeValue(data, for: writeCharacteristic, type: .withResponse)
     }
 }

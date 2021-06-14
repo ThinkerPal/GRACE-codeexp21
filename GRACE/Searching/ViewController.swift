@@ -58,6 +58,9 @@ class ViewController: UIViewController, MSDOSDelegate {
         } completion: { _ in
             // Launch another controller
             print(lobby)
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            
             #warning("pass lobby over")
         }
 

@@ -105,9 +105,22 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         guard let characteristics = service.characteristics else { return }
         
+        let microbitIndex = microbits.firstIndex(where: {
+            $0.peripheral == peripheral
+        })!
+        let microbit = microbits[microbitIndex]
+        
         for characteristic in characteristics {
             if characteristic.uuid == writeUUID {
-                microbit?.writeCharacteristic = characteristic
+                microbit.writeCharacteristic = characteristic
+                
+                if let microbitIndex = microbits.firstIndex(where: {
+                    $0.peripheral == peripheral
+                }) {
+                    let microbit = microbits[microbitIndex]
+                    microbit.write("metadata please")
+                }
+                
             } else if characteristic.uuid == readUUID {
                 peripheral.setNotifyValue(true, for: characteristic)
             }
@@ -139,9 +152,22 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
                 }
                 
                 delegate?.didFindLobby(Lobby(block: contents[0],
-                                             currentFloor: contents[1],
-                                             lowerboundFloor: contents[2],
-                                             upperboundFloor: contents[3]))
+                                             lobby: contents[1],
+                                             currentFloor: contents[2],
+                                             lowerboundFloor: contents[3],
+                                             upperboundFloor: contents[4]))
+            } else {
+                centralManager.cancelPeripheralConnection(peripheral)
+                
+                if let index = microbits.firstIndex(where: {
+                    $0.peripheral.identifier == peripheral.identifier
+                }) {
+                    microbits.remove(at: index)
+                }
+                
+                if let microbit = microbits.first {
+                    centralManager.connect(microbit.peripheral, options: nil)
+                }
             }
             break
         case .lift:
