@@ -275,6 +275,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="qNa-b6-R7h" firstAttribute="height" secondItem="gtW-lp-uqA" secondAttribute="height" multiplier="0.75" id="LQy-Vu-OVT"/>
+                                    <constraint firstItem="qNa-b6-R7h" firstAttribute="leading" secondItem="gtW-lp-uqA" secondAttribute="leading" id="vDv-ic-0Q5"/>
                                 </constraints>
                             </stackView>
                         </subviews>
