@@ -95,7 +95,7 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
-        print("\(peripheral.name) \(RSSI)")
+        print("\(peripheral.name ?? "Unanamed") \(RSSI)")
     }
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
