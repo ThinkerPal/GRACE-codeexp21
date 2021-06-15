@@ -9,28 +9,41 @@ import UIKit
 
 class WaitingLiftViewController: UIViewController {
     
-    var destinationFloor: Int = 8
-    #warning("Destination Floor needs to be passed from Level Picker")
+    var lobby: Lobby! = Lobby(block: "123", lobby: "A", currentFloor: 2.0, lowerboundFloor: 1.0, upperboundFloor: 12.0)
+    var userFloor: String! = "8"
+    var targetFloor: Double!
+    
+    #warning("Target Floor needs to be passed from Level Picker")
     
     @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var animationCircle: UIView!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var phoneIcon: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        levelLabel.text = "Level \(destinationFloor)"
-        
-//        animationCircle.layer.cornerRadius = 70
-//        animationCircle.layer.borderWidth = 5
+        levelLabel.text = "Level \(userFloor!)"
+        locationLabel.text = "Blk \(lobby.block) Lobby \(lobby.lobby)"
+        cancelBtn.layer.cornerRadius = 20
         // Do any additional setup after loading the view.
         phoneAnimation()
         #warning("call function while looking for lift transponder")
     }
     
     func phoneAnimation() {
-        UIView.animate(withDuration: 1.5, delay: 1, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
-            self.phoneIcon.transform = self.phoneIcon.transform.scaledBy(x: 0.8, y: 0.8).translatedBy(x: 0, y: -40)
-        })}
+        UIView.animate(withDuration: 2.0, delay: 0, options: [.repeat, .autoreverse, .curveEaseInOut], animations: {
+            self.phoneIcon.transform = self.phoneIcon.transform.scaledBy(x: 0.8, y: 0.8).translatedBy(x: 0, y: -65)
+            })
+    }
+    
+    @IBAction func cancelAlert(_ sender: Any) {
+        let alert = UIAlertController(title: "Choose Level Again", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 
     /*
     Old Animations
