@@ -61,8 +61,15 @@ extension FloorSelectionViewController {
             
             msdos.callLift(going: lobby.currentFloor > floor ? .down : .up)
             
-            // All Values are valid
-            #warning("implement segue to next VC")
+            let storyboard = UIStoryboard(name: "WaitingLift", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController() as! WaitingLiftViewController
+            
+            vc.msdos = msdos
+            vc.lobby = lobby
+            vc.userFloor = userFloor
+            vc.targetFloor = floor
+            
+            present(vc, animated: true)
             
         } else {
             let alert = UIAlertController(title: "Invalid Floor Selected",

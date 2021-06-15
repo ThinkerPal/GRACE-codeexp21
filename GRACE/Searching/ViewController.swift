@@ -14,12 +14,15 @@ class ViewController: UIViewController, MSDOSDelegate {
     
     @IBOutlet weak var searchingIndicator: UIImageView!
     
-    let msdos = MSDOS()
+    var msdos: MSDOS!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if msdos == nil {
+            msdos = MSDOS()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
