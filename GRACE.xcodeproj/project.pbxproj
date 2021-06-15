@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25E1A5312677662F0027C3B0 /* WaitingLiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1A5302677662F0027C3B0 /* WaitingLiftViewController.swift */; };
 		32D6D15F26775CCC00E53AB1 /* MultiLobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D15E26775CCC00E53AB1 /* MultiLobby.storyboard */; };
 		32D6D16126775CD800E53AB1 /* FloorSelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D16026775CD800E53AB1 /* FloorSelection.storyboard */; };
 		32D6D16326775CEC00E53AB1 /* WaitingLift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D16226775CEC00E53AB1 /* WaitingLift.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25E1A5302677662F0027C3B0 /* WaitingLiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingLiftViewController.swift; sourceTree = "<group>"; };
 		32D6D15E26775CCC00E53AB1 /* MultiLobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiLobby.storyboard; sourceTree = "<group>"; };
 		32D6D16026775CD800E53AB1 /* FloorSelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FloorSelection.storyboard; sourceTree = "<group>"; };
 		32D6D16226775CEC00E53AB1 /* WaitingLift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WaitingLift.storyboard; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		32D6D16A26775F5C00E53AB1 /* Waiting for Lift */ = {
 			isa = PBXGroup;
 			children = (
+				25E1A5302677662F0027C3B0 /* WaitingLiftViewController.swift */,
 				32D6D16226775CEC00E53AB1 /* WaitingLift.storyboard */,
 			);
 			path = "Waiting for Lift";
@@ -220,6 +223,7 @@
 				A0604D492677594A00444469 /* AppDelegate.swift in Sources */,
 				A0604D4B2677594A00444469 /* SceneDelegate.swift in Sources */,
 				32D6D16F26775F9C00E53AB1 /* Lobby.swift in Sources */,
+				25E1A5312677662F0027C3B0 /* WaitingLiftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

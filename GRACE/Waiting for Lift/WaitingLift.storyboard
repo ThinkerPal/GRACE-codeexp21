@@ -1,28 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Waiting Lift View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="WaitingLiftViewController" customModule="GRACE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have choosen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFD-Ls-ckd">
+                                <rect key="frame" x="20" y="64" width="250.5" height="38.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level ___" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6i-s9-G1H">
+                                <rect key="frame" x="20" y="122.5" width="234" height="65"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="54"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0MK-Me-E7e">
+                                <rect key="frame" x="132" y="237.5" width="150" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="antenna.radiowaves.left.and.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QGy-IG-PTI">
+                                        <rect key="frame" x="40" y="3.5" width="70" height="68"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="QGy-IG-PTI" secondAttribute="height" multiplier="1:1" id="D8d-VH-5pn"/>
+                                            <constraint firstAttribute="width" constant="70" id="cIP-7u-nu0"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gCS-Gt-5EW">
+                                        <rect key="frame" x="25" y="-91.5" width="100" height="433"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="gCS-Gt-5EW" secondAttribute="height" multiplier="9:39" id="3xF-c6-7tc"/>
+                                            <constraint firstAttribute="width" constant="100" id="qPR-wc-gps"/>
+                                        </constraints>
+                                        <imageReference key="image" image="iphone" catalog="system" symbolScale="default"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="0We-gm-XeM"/>
+                                    <constraint firstItem="QGy-IG-PTI" firstAttribute="top" secondItem="0MK-Me-E7e" secondAttribute="top" constant="3" id="Arn-4q-CFl"/>
+                                    <constraint firstItem="QGy-IG-PTI" firstAttribute="centerX" secondItem="0MK-Me-E7e" secondAttribute="centerX" id="Pi4-Fs-8oX"/>
+                                    <constraint firstAttribute="width" secondItem="0MK-Me-E7e" secondAttribute="height" multiplier="1:1" id="RYX-qi-X6L"/>
+                                    <constraint firstItem="gCS-Gt-5EW" firstAttribute="centerY" secondItem="0MK-Me-E7e" secondAttribute="centerY" constant="50" id="SYT-nM-Yd1"/>
+                                    <constraint firstItem="gCS-Gt-5EW" firstAttribute="centerX" secondItem="0MK-Me-E7e" secondAttribute="centerX" id="mFs-Sh-Xwk"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place your device near the lift panel." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gc1-px-oOj">
+                                <rect key="frame" x="20" y="487.5" width="374" height="76.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8p-ch-cY2">
+                                <rect key="frame" x="158.5" y="684" width="97" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="Cancel"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gc1-px-oOj" secondAttribute="trailing" constant="20" id="Bxe-8V-B8t"/>
+                            <constraint firstItem="U6i-s9-G1H" firstAttribute="top" secondItem="iFD-Ls-ckd" secondAttribute="bottom" constant="20" id="CKU-tB-Epe"/>
+                            <constraint firstItem="0MK-Me-E7e" firstAttribute="top" secondItem="U6i-s9-G1H" secondAttribute="bottom" constant="50" id="GfJ-lv-TYn"/>
+                            <constraint firstItem="Gc1-px-oOj" firstAttribute="top" secondItem="0MK-Me-E7e" secondAttribute="bottom" constant="100" id="Jgh-Ln-1pJ"/>
+                            <constraint firstItem="Gc1-px-oOj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="YGU-XH-SLd"/>
+                            <constraint firstItem="D8p-ch-cY2" firstAttribute="top" secondItem="Gc1-px-oOj" secondAttribute="bottom" constant="120" id="ZdX-mK-Med"/>
+                            <constraint firstItem="Gc1-px-oOj" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="hzQ-kR-xMt"/>
+                            <constraint firstItem="D8p-ch-cY2" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="oaB-Z5-lGf"/>
+                            <constraint firstItem="iFD-Ls-ckd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="qe6-lI-oLj"/>
+                            <constraint firstItem="iFD-Ls-ckd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="reh-Jh-gbF"/>
+                            <constraint firstItem="U6i-s9-G1H" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="rna-yH-AQo"/>
+                            <constraint firstItem="0MK-Me-E7e" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="row-NS-sAX"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="animationCircle" destination="0MK-Me-E7e" id="q51-Hr-GlI"/>
+                        <outlet property="levelLabel" destination="U6i-s9-G1H" id="YnL-dS-KGC"/>
+                        <outlet property="phoneIcon" destination="gCS-Gt-5EW" id="ADO-yJ-LkK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
+        <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="109"/>
+        <image name="iphone" catalog="system" width="108" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
