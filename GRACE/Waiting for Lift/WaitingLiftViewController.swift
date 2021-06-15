@@ -38,25 +38,11 @@ class WaitingLiftViewController: UIViewController {
     }
     
     @IBAction func cancelAlert(_ sender: Any) {
-        let alert = UIAlertController(title: "Choose Level Again", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        let alert = UIAlertController(title: "Cancel Lift Request?", message: "Are you sure you want to cancel?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
-
-    /*
-    Old Animations
-        UIView.animate(withDuration: 2.0, delay: 0.5, options: .curveEaseInOut, animations: {
-             self.phoneIcon.transform = self.phoneIcon.transform.translatedBy(x: -50, y: 30)
-         }) { (_) in
-             UIView.animate(withDuration: 3.0, animations: {
-                 self.phoneIcon.transform = self.phoneIcon.transform.translatedBy(x: 100, y: -30)
-             }) { (_) in
-                 UIView.animate(withDuration: 2.0, animations: {
-                     self.phoneIcon.transform = self.phoneIcon.transform.translatedBy(x: -50, y: 20)
-                 }) { (_) in
-    */
 
 
     /*
