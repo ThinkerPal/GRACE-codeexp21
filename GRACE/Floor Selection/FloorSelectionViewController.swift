@@ -15,7 +15,9 @@ class FloorSelectionViewController: UIViewController {
     @IBOutlet var keypadButtons: [UIButton]!
     
     // Objects that are passed from intialising this VC
-    var lobby: Lobby?
+//    var lobby = Lobby?
+    #warning("Testing data here")
+    var lobby = Lobby(block: "124A", lobby: "B", currentFloor: 1, lowerboundFloor: -2, upperboundFloor: 18)
     var targetFloor: String = ""
     
     
@@ -28,12 +30,89 @@ class FloorSelectionViewController: UIViewController {
             keypadButton.tag = n
             print(n)
         }
+        floorLabel.text = targetFloor
+//        blockLabel.text = "Block \(lobby?.block ?? "123")"
+//        lobbyLabel.text = "Lobby \(lobby?.lobby ?? "A")"
+        #warning("using local data version")
+        blockLabel.text = "Block \(lobby.block)"
+        lobbyLabel.text = "Lobby \(lobby.lobby)"
     }
     @IBAction func commenceRefindingPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Need to find another GRACE! ", message: "Whooooooo your device is so good it can detect multiple things", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in
+            print("wowo")
+            self.dismiss(animated: true)
+        }))
+        self.present(alert, animated:true)
+        #warning("need to implement bringing up the Multilobby storyboard")
+        
     }
     @IBAction func keypadButtonPressed(_ sender: UIButton){
         print(sender.tag)
-        targetFloor += String(sender.tag)
+        if sender.tag < 10 {
+            targetFloor += String(sender.tag)
+            floorLabel.text = targetFloor
+        }else{
+            switch sender.tag{
+            case 10:
+                targetFloor += "B"
+                floorLabel.text = targetFloor
+                break
+            case 11:
+                let alert = UIAlertController(title: "Shiny button", message: "Lizard brain must press", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "G", style: .default, handler: { _ in
+                    self.targetFloor += "G"
+                    self.floorLabel.text = self.targetFloor
+                }))
+                alert.addAction(UIAlertAction(title: "M", style: .default, handler: { _ in
+                    self.targetFloor += "M"
+                    self.floorLabel.text = self.targetFloor
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated:true)
+                #warning("Do we need a more?")
+                break
+            case 12:
+//                if lobby!.lowerboundFloor...lobby!.upperboundFloor ~= Int(targetFloor)!{
+                #warning("using local data version")
+                if targetFloor.hasPrefix("B"){
+                    targetFloor = "-" + targetFloor.dropFirst()
+                }else if targetFloor.contains("M"){
+                    targetFloor = targetFloor.replacingOccurrences(of: "M", with: "")
+                    targetFloor += ".5"
+                }else if targetFloor == "G" {
+                    self.targetFloor = "0"
+                    self.floorLabel.text = targetFloor
+                }
+                if lobby.lowerboundFloor...lobby.upperboundFloor ~= Double(targetFloor)!{
+                    let alert = UIAlertController(title: "You confirmed!!", message: "You are going to \(targetFloor)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "banana", style: .default, handler: { _ in
+                        print("confirmed, \(self.targetFloor)")
+                    }))
+                    self.present(alert, animated:true)
+                }else{
+                    let alert = UIAlertController(title: "Invalid Floor Selected", message: "You selected an invalid floor!", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                        self.dismiss(animated: true, completion: nil)
+                    }))
+                    alert.addAction(UIAlertAction(title: "Reset", style: .destructive, handler: { _ in
+                        self.targetFloor = ""
+                        self.floorLabel.text = self.targetFloor
+                    }))
+                    self.present(alert, animated: true)
+                    
+                }
+                #warning("implement segue to next VC")
+                break
+            default:
+                targetFloor = String(targetFloor.dropLast())
+                floorLabel.text = targetFloor
+                break
+                
+            }
+            
+        }
+        
     }
     
     
