@@ -10,7 +10,7 @@ import Foundation
 struct Lobby {
     var block: String
     var lobby: String
-    var currentFloor: String
-    var lowerboundFloor: String
-    var upperboundFloor: String
+    var currentFloor: Double
+    var lowerboundFloor: Double
+    var upperboundFloor: Double
 }

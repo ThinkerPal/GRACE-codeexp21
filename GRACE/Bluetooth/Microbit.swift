@@ -25,6 +25,9 @@ public class Microbit {
         guard let writeCharacteristic = writeCharacteristic else { return }
         
         let data = Data("\(value)\n".utf8)
+        
+        print("✏️ MS-DOS: \(value)")
+        
         peripheral.writeValue(data, for: writeCharacteristic, type: .withResponse)
     }
 }

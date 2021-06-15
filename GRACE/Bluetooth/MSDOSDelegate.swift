@@ -9,10 +9,10 @@ import Foundation
 
 protocol MSDOSDelegate {
     func didFindLobby(_ lobby: Lobby)
+    func didDisconnect()
 }
 
 extension MSDOSDelegate {
-    func didFindLobby(_ lobby: Lobby) {
-        
-    }
+    func didFindLobby(_ lobby: Lobby) {}
+    func didDisconnect() {}
 }

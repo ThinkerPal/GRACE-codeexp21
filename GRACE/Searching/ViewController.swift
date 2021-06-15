@@ -61,9 +61,23 @@ class ViewController: UIViewController, MSDOSDelegate {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
             
-            #warning("pass lobby over")
+            #warning("pass lobby over to next view controller")
         }
-
+    }
+    
+    func didDisconnect() {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [self] in
+            statusLabel.alpha = 1
+            infomationLabel.alpha = 1
+            
+            searchingIndicator.transform = .init(scaleX: 0.001, y: 0.001)
+            searchingIndicator.alpha = 0.8
+            
+            searchingIndicator.image = UIImage(systemName: "circle.fill")
+        } completion: { _ in
+            self.startSearching()
+        }
     }
 }
 

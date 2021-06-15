@@ -31,6 +31,8 @@ public class MSDOS: NSObject {
     
     var microbits: [Microbit] = []
     
+    var lobbyDevice: Microbit?
+    
     var scanType: ScanType!
     
     var delegate: MSDOSDelegate?
@@ -43,6 +45,23 @@ public class MSDOS: NSObject {
     func startScanning(for scanType: ScanType = .lobby) {
         self.scanType = scanType
         centralManager = CBCentralManager(delegate: self, queue: .main)
+        
+        microbit = nil
+        microbits = []
+    }
+    
+    enum LiftDirection: String {
+        case up = "#A!1"
+        case down = "#A!0"
+    }
+    
+    func callLift(going direction: LiftDirection) {
+        if scanType == .lobby {
+            print(direction.rawValue)
+            microbit?.write(direction.rawValue)
+        } else {
+            print("🛑 MS-DOS: Unable to perform `ScanType.lobby` functions on a `ScanType.lift`")
+        }
     }
 }
 
@@ -54,18 +73,18 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
         print(name)
         let regex = try! NSRegularExpression(pattern: "BBC micro:bit \\[[z|v|g|p|t][u|o|i|e|a][z|v|g|p|t][u|o|i|e|a][z|v|g|p|t]\\]",
                                              options: [])
+        
         guard regex.matches(in: name, options: [], range: NSRange(location: 0, length: name.count)).count == 1 else {
             return
         }
         
-        let microbit = Microbit(with: peripheral)
-        
-        microbits.append(microbit)
-        
-        centralManager.connect(microbit.peripheral, options: nil)
-        
-        print(name)
-        print("----")
+        if !microbits.contains(where: { $0.peripheral.identifier == peripheral.identifier }) {
+            let microbit = Microbit(with: peripheral)
+            
+            microbits.append(microbit)
+            
+            centralManager.connect(microbit.peripheral, options: nil)
+        }
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -88,6 +107,8 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("👋 MS-DOS: Disconnected from", peripheral.name ?? "unnamed")
+        
+        delegate?.didDisconnect()
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -115,10 +136,10 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
                 microbit.writeCharacteristic = characteristic
                 
                 if let microbitIndex = microbits.firstIndex(where: {
-                    $0.peripheral == peripheral
+                    $0.peripheral.identifier == peripheral.identifier
                 }) {
-                    let microbit = microbits[microbitIndex]
-                    microbit.write("metadata please")
+                    let internalMicrobit = microbits[microbitIndex]
+                    internalMicrobit.write("metadata please")
                 }
                 
             } else if characteristic.uuid == readUUID {
@@ -136,9 +157,6 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
               let stringValue = String(data: value,
                                        encoding: .utf8) else { return }
         
-        
-        print(stringValue)
-        
         switch scanType {
         case .lobby:
             if stringValue.first == "#" {
@@ -153,9 +171,15 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
                 
                 delegate?.didFindLobby(Lobby(block: contents[0],
                                              lobby: contents[1],
-                                             currentFloor: contents[2],
-                                             lowerboundFloor: contents[3],
-                                             upperboundFloor: contents[4]))
+                                             currentFloor: Double(contents[2])!,
+                                             lowerboundFloor: Double(contents[3])!,
+                                             upperboundFloor: Double(contents[4])!))
+                
+                let microbitIndex = microbits.firstIndex(where: {
+                    $0.peripheral == peripheral
+                })!
+                
+                microbit = microbits[microbitIndex]
             } else {
                 centralManager.cancelPeripheralConnection(peripheral)
                 
