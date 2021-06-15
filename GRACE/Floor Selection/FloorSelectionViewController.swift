@@ -31,8 +31,8 @@ class FloorSelectionViewController: UIViewController {
             print(n)
         }
         floorLabel.text = targetFloor
-//        blockLabel.text = "Block \(lobby?.block ?? "123")"
-//        lobbyLabel.text = "Lobby \(lobby?.lobby ?? "A")"
+//        blockLabel.text = "Block \(lobby?.block ?? "")"
+//        lobbyLabel.text = "Lobby \(lobby?.lobby ?? "")"
         #warning("using local data version")
         blockLabel.text = "Block \(lobby.block)"
         lobbyLabel.text = "Lobby \(lobby.lobby)"
@@ -59,7 +59,7 @@ class FloorSelectionViewController: UIViewController {
                 floorLabel.text = targetFloor
                 break
             case 11:
-                let alert = UIAlertController(title: "Shiny button", message: "Lizard brain must press", preferredStyle: .actionSheet)
+                let alert = UIAlertController(title: "More Floor Options", message: nil, preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "G", style: .default, handler: { _ in
                     self.targetFloor += "G"
                     self.floorLabel.text = self.targetFloor
@@ -75,21 +75,20 @@ class FloorSelectionViewController: UIViewController {
             case 12:
 //                if lobby!.lowerboundFloor...lobby!.upperboundFloor ~= Int(targetFloor)!{
                 #warning("using local data version")
-                if targetFloor.hasPrefix("B"){
-                    targetFloor = "-" + targetFloor.dropFirst()
+                let userFloor = self.targetFloor
+                if targetFloor.contains("B"){
+                    targetFloor = targetFloor.replacingOccurrences(of: "B", with: "")
+                    targetFloor = "-" + targetFloor
                 }else if targetFloor.contains("M"){
                     targetFloor = targetFloor.replacingOccurrences(of: "M", with: "")
                     targetFloor += ".5"
                 }else if targetFloor == "G" {
                     self.targetFloor = "0"
-                    self.floorLabel.text = targetFloor
+                    self.floorLabel.text = userFloor
                 }
                 if lobby.lowerboundFloor...lobby.upperboundFloor ~= Double(targetFloor)!{
-                    let alert = UIAlertController(title: "You confirmed!!", message: "You are going to \(targetFloor)", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "banana", style: .default, handler: { _ in
-                        print("confirmed, \(self.targetFloor)")
-                    }))
-                    self.present(alert, animated:true)
+                    // All Values are valid
+                    #warning("implement segue to next VC")
                 }else{
                     let alert = UIAlertController(title: "Invalid Floor Selected", message: "You selected an invalid floor!", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
@@ -102,7 +101,6 @@ class FloorSelectionViewController: UIViewController {
                     self.present(alert, animated: true)
                     
                 }
-                #warning("implement segue to next VC")
                 break
             default:
                 targetFloor = String(targetFloor.dropLast())
