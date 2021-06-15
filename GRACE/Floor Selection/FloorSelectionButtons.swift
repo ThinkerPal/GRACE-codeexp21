@@ -55,7 +55,12 @@ extension FloorSelectionViewController {
             
         }
         
-        if lobby.lowerboundFloor...lobby.upperboundFloor ~= Double(targetFloor)! {
+        let floor = Double(targetFloor)!
+        
+        if lobby.lowerboundFloor...lobby.upperboundFloor ~= floor {
+            
+            msdos.callLift(going: lobby.currentFloor > floor ? .down : .up)
+            
             // All Values are valid
             #warning("implement segue to next VC")
             

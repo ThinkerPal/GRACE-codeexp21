@@ -66,6 +66,7 @@ class ViewController: UIViewController, MSDOSDelegate {
             
             vc.modalPresentationStyle = .fullScreen
             vc.lobby = lobby
+            vc.msdos = msdos
             
             present(vc, animated: true)
         }

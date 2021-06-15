@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3256CDF82677C97A00EF4F6C /* MSDOSDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256CDF72677C97A00EF4F6C /* MSDOSDelegate.swift */; };
 		327C18412678A3B600716D55 /* FloorSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C18402678A3B600716D55 /* FloorSelectionButtons.swift */; };
+		327C18432678A58200716D55 /* MSDOS+BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C18422678A58200716D55 /* MSDOS+BLE.swift */; };
 		32D6D15F26775CCC00E53AB1 /* MultiLobby.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D15E26775CCC00E53AB1 /* MultiLobby.storyboard */; };
 		32D6D16326775CEC00E53AB1 /* WaitingLift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D16226775CEC00E53AB1 /* WaitingLift.storyboard */; };
 		32D6D16526775CFD00E53AB1 /* InLift.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D6D16426775CFD00E53AB1 /* InLift.storyboard */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3256CDF72677C97A00EF4F6C /* MSDOSDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSDOSDelegate.swift; sourceTree = "<group>"; };
 		327C18402678A3B600716D55 /* FloorSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorSelectionButtons.swift; sourceTree = "<group>"; };
+		327C18422678A58200716D55 /* MSDOS+BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSDOS+BLE.swift"; sourceTree = "<group>"; };
 		32D6D15E26775CCC00E53AB1 /* MultiLobby.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MultiLobby.storyboard; sourceTree = "<group>"; };
 		32D6D16226775CEC00E53AB1 /* WaitingLift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WaitingLift.storyboard; sourceTree = "<group>"; };
 		32D6D16426775CFD00E53AB1 /* InLift.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InLift.storyboard; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				32D6D16E26775F9C00E53AB1 /* Lobby.swift */,
 				32D6D171267766CC00E53AB1 /* MSDOS.swift */,
+				327C18422678A58200716D55 /* MSDOS+BLE.swift */,
 				3256CDF72677C97A00EF4F6C /* MSDOSDelegate.swift */,
 				32D6D1732677685500E53AB1 /* Microbit.swift */,
 			);
@@ -240,6 +243,7 @@
 				32D6D172267766CC00E53AB1 /* MSDOS.swift in Sources */,
 				32D6D16F26775F9C00E53AB1 /* Lobby.swift in Sources */,
 				3256CDF82677C97A00EF4F6C /* MSDOSDelegate.swift in Sources */,
+				327C18432678A58200716D55 /* MSDOS+BLE.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

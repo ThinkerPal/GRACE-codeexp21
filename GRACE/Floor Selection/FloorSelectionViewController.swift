@@ -16,6 +16,8 @@ class FloorSelectionViewController: UIViewController {
     
     // Objects that are passed from intialising this VC
     var lobby: Lobby!
+    var msdos: MSDOS!
+    
     var targetFloor: String = "" {
         didSet {
             keypadButtons[12].isEnabled = !targetFloor.isEmpty
