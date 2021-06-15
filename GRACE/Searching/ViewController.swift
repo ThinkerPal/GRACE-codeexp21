@@ -55,13 +55,19 @@ class ViewController: UIViewController, MSDOSDelegate {
             
             statusLabel.alpha = 0
             infomationLabel.alpha = 0
-        } completion: { _ in
+        } completion: { [self] _ in
             // Launch another controller
             print(lobby)
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
             
-            #warning("pass lobby over to next view controller")
+            let storyboard = UIStoryboard(name: "FloorSelection", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController() as! FloorSelectionViewController
+            
+            vc.modalPresentationStyle = .fullScreen
+            vc.lobby = lobby
+            
+            present(vc, animated: true)
         }
     }
     
