@@ -61,6 +61,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>hello gimme btle thanks</string>
+	<string>Bluetooth is required to connect to the lobby and lifts</string>
 </dict>
 </plist>
