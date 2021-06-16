@@ -7,14 +7,14 @@
 ## What is GRACE?
 Grace stands for:
 
-### **G**eneral
+ **G**eneral
 
-### **R**emotely
+ **R**emotely
 
-### **A**ccesible
+ **A**ccesible
 
-### **C**ontactless
+ **C**ontactless
 
-### **E**levators
+ **E**levators
 
 
