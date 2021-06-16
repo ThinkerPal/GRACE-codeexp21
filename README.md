@@ -1,5 +1,5 @@
 # GRACE
-This is a code submission for the Brainhack 2021 CODE_EXP Competition
+This is a code submission for the [Brainhack 2021 CODE_EXP Competition](http://codeexp.tk.sg)
 
 <img src="./appicon.png" width=256/>
 
@@ -19,7 +19,7 @@ GRACE stands for:
  **E**levators - Elevator!!!
 
 ## Why GRACE?
-### Problem Statement:
+### Problem Statement
 **“How can we better adjust and adapt into New Norms in a Post-Covid world?”**
 
 > The world was hit by Covid-19 and we have been compelled to experience an unprecedented shift in our lifestyle and the need to adapt to various new norms. Adjusting to changes can pose quite a challenge, especially when it affects our daily routine, be it the way we work and study, or the way we socialise and connect. However, adaptation is inevitable as Covid-19 may be here to stay and has, and will continue to change the way we live.
@@ -46,15 +46,18 @@ However, not everyone is able to adapt well to these changes, and certain groups
 ## Technical Details
 
 ### Technologies used:
-- BBC micro:bit v2
-    - This is used to simulate the lift interface in our prototype
-- Swift/Xcode
+- [BBC micro:bit v2](https://microbit.org)
+    - This is used to simulate the hardware lift and lobby interface in our prototype
+- [Swift/Xcode](https://developer.apple.com/swift)
     - IDE of choice for iOS App Development
-- UIKit
+- [UIKit](https://developer.apple.com/documentation/uikit)
     - Used for front-end Development
-- CoreBluetooth
+- [CoreBluetooth](https://developer.apple.com/documentation/corebluetooth)
     - Used in communications between the micro:bit and iPhone
+- MS-DOS
+    - Custom built interface between the micro:bit and Swift. 
+    - It integrates directly into [CoreBluetooth](https://developer.apple.com/documentation/corebluetooth) and abstracts most of [CoreBluetooth](https://developer.apple.com/documentation/corebluetooth) boilerplate functions and manages pairing.
 
 ### Technical Flowchart
-![](./flowchart.png)
+![Technical Flowchart](./flowchart.png)
 
