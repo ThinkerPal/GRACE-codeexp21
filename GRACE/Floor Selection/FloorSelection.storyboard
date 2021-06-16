@@ -225,14 +225,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JHx-Ps-Umx">
                                         <rect key="frame" x="0.0" y="385.5" width="374" height="126.5"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.30000001192092896" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0G-7u-fGA">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ4-xV-3D4">
                                                 <rect key="frame" x="0.0" y="0.0" width="124.5" height="126.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <color key="tintColor" name="DarkBlue"/>
-                                                <state key="normal">
-                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="80"/>
-                                                </state>
-                                            </button>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gn-DE-N5P">
                                                 <rect key="frame" x="124.5" y="0.0" width="125" height="126.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -279,7 +275,9 @@
                     <connections>
                         <outlet property="blockLabel" destination="2Xa-sD-UkA" id="RwS-Xd-JaK"/>
                         <outlet property="floorLabel" destination="BDi-JM-jbk" id="Ceu-Cn-OWS"/>
+                        <outlet property="headerView" destination="q2g-JK-1pN" id="UlL-kw-VJF"/>
                         <outlet property="lobbyLabel" destination="JBj-Qz-fdy" id="Q8d-LB-YDH"/>
+                        <outlet property="welcomeTitleLabel" destination="Wvs-Bu-Y5V" id="NQS-5y-7Ut"/>
                         <outletCollection property="keypadButtons" destination="vxW-oP-Nhn" collectionClass="NSMutableArray" id="rJt-2C-sqB"/>
                         <outletCollection property="keypadButtons" destination="B7z-wn-Bcm" collectionClass="NSMutableArray" id="mZL-V8-a21"/>
                         <outletCollection property="keypadButtons" destination="WIj-1Q-fsv" collectionClass="NSMutableArray" id="hi4-Yg-Sm5"/>

@@ -69,16 +69,16 @@ extension FloorSelectionViewController {
             vc.userFloor = userFloor
             vc.targetFloor = floor
             
+            vc.modalPresentationStyle = .fullScreen
+            
             present(vc, animated: true)
             
         } else {
-            let alert = UIAlertController(title: "Invalid Floor Selected",
-                                          message: "You selected an invalid floor!",
+            let alert = UIAlertController(title: "Invalid Floor!",
+                                          message: "You entered \(targetFloor). Ensure the floor is within \(Int(lobby.lowerboundFloor)) and \(Int(lobby.upperboundFloor)).",
                                           preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { [self] _ in
-                dismiss(animated: true, completion: nil)
-            })
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
             
             alert.addAction(UIAlertAction(title: "Reset", style: .destructive) { [self] _ in
                 targetFloor = ""
