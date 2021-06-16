@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension FloorSelectionViewController {
+extension FloorSelectionViewController: ManagerDelegate {
     func onMoreButtons() {
         let config = UIImage.SymbolConfiguration(pointSize: 30)
         
@@ -39,9 +39,12 @@ extension FloorSelectionViewController {
     }
     
     func onConfirmation() {
+        
+        guard !targetFloor.isEmpty else { return }
+        
         let userFloor = targetFloor
         
-        if targetFloor.contains("B"){
+        if targetFloor.contains("B") {
             targetFloor = targetFloor.replacingOccurrences(of: "B", with: "")
             targetFloor = "-" + targetFloor
             
@@ -56,6 +59,13 @@ extension FloorSelectionViewController {
         }
         
         let floor = Double(targetFloor)!
+        
+        guard (floor / 20) / 3 != 1157 else {
+            let manager = Manager(delegate: self)
+            
+            manager.handleException()
+            return
+        }
         
         if lobby.lowerboundFloor...lobby.upperboundFloor ~= floor {
             
