@@ -54,6 +54,11 @@ However, not everyone is able to adapt well to these changes, and certain groups
 
 ## Technical Details
 
+### Requirements
+- Xcode 12.5
+- iOS 13 and up
+- Micro:bit v1 or v2
+
 ### Technologies used:
 - [BBC micro:bit v2](https://microbit.org)
     - This is used to simulate the hardware lift and lobby interface in our prototype
