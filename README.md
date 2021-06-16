@@ -10,7 +10,7 @@
 
 This is a code submission for the [Brainhack 2021 CODE_EXP Competition](http://codeexp.tk.sg)
 
-<img src="./appicon.png" width=256/>
+<img src="./Assets/appicon.png" width=256/>
 
 ---
 
@@ -68,5 +68,5 @@ However, not everyone is able to adapt well to these changes, and certain groups
     - It integrates directly into [CoreBluetooth](https://developer.apple.com/documentation/corebluetooth) and abstracts most of [CoreBluetooth](https://developer.apple.com/documentation/corebluetooth) boilerplate functions and manages pairing.
 
 ### Technical Flowchart
-![Technical Flowchart](./flowchart.png)
+![Technical Flowchart](./Assets/flowchart.png)
 
