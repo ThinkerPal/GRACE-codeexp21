@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension FloorSelectionViewController {
+extension FloorSelectionViewController: ManagerDelegate {
     func onMoreButtons() {
         let config = UIImage.SymbolConfiguration(pointSize: 30)
         
@@ -39,9 +39,12 @@ extension FloorSelectionViewController {
     }
     
     func onConfirmation() {
+        
+        guard !targetFloor.isEmpty else { return }
+        
         let userFloor = targetFloor
         
-        if targetFloor.contains("B"){
+        if targetFloor.contains("B") {
             targetFloor = targetFloor.replacingOccurrences(of: "B", with: "")
             targetFloor = "-" + targetFloor
             
@@ -57,21 +60,35 @@ extension FloorSelectionViewController {
         
         let floor = Double(targetFloor)!
         
+        guard (floor / 20) / 3 != 1157 else {
+            let manager = Manager(delegate: self)
+            
+            manager.handleException()
+            return
+        }
+        
         if lobby.lowerboundFloor...lobby.upperboundFloor ~= floor {
             
             msdos.callLift(going: lobby.currentFloor > floor ? .down : .up)
             
-            // All Values are valid
-            #warning("implement segue to next VC")
+            let storyboard = UIStoryboard(name: "WaitingLift", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController() as! WaitingLiftViewController
+            
+            vc.msdos = msdos
+            vc.lobby = lobby
+            vc.userFloor = userFloor
+            vc.targetFloor = floor
+            
+            vc.modalPresentationStyle = .fullScreen
+            
+            present(vc, animated: true)
             
         } else {
-            let alert = UIAlertController(title: "Invalid Floor Selected",
-                                          message: "You selected an invalid floor!",
+            let alert = UIAlertController(title: "Invalid Floor!",
+                                          message: "You entered \(targetFloor). Ensure the floor is within \(Int(lobby.lowerboundFloor)) and \(Int(lobby.upperboundFloor)).",
                                           preferredStyle: .alert)
             
-            alert.addAction(UIAlertAction(title: "Ok", style: .default) { [self] _ in
-                dismiss(animated: true, completion: nil)
-            })
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
             
             alert.addAction(UIAlertAction(title: "Reset", style: .destructive) { [self] _ in
                 targetFloor = ""

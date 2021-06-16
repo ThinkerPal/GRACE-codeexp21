@@ -13,7 +13,10 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
+        print(peripheral.name)
+        
         guard let name = peripheral.name else { return }
+        
         print(name)
         let regex = try! NSRegularExpression(pattern: "BBC micro:bit \\[[z|v|g|p|t][u|o|i|e|a][z|v|g|p|t][u|o|i|e|a][z|v|g|p|t]\\]",
                                              options: [])
@@ -22,13 +25,13 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         
-        if !microbits.contains(where: { $0.peripheral.identifier == peripheral.identifier }) {
-            let microbit = Microbit(with: peripheral)
-            
-            microbits.append(microbit)
-            
-            centralManager.connect(microbit.peripheral, options: nil)
-        }
+        print("RSSI", RSSI.intValue)
+        
+        let microbit = Microbit(with: peripheral)
+        
+        microbits.append(microbit)
+        
+        centralManager.connect(microbit.peripheral, options: nil)
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -51,8 +54,9 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print("👋 MS-DOS: Disconnected from", peripheral.name ?? "unnamed")
-        
-        delegate?.didDisconnect()
+        if microbit?.peripheral.identifier == peripheral.identifier {
+            delegate?.didDisconnect()
+        }
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -83,14 +87,15 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
                     $0.peripheral.identifier == peripheral.identifier
                 }) {
                     let internalMicrobit = microbits[microbitIndex]
-                    internalMicrobit.write("metadata please")
+                    
+                    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                        internalMicrobit.write("metadata please")
+                    }
                 }
                 
             } else if characteristic.uuid == readUUID {
                 peripheral.setNotifyValue(true, for: characteristic)
             }
-            
-            peripheral.setNotifyValue(true, for: characteristic)
         }
     }
     
@@ -104,6 +109,7 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
         switch scanType {
         case .lobby:
             if stringValue.first == "#" {
+                print("Continuing with \(peripheral.name!)")
                 // It is a lobby
                 // We can continue as a lobby
                 var content = stringValue
@@ -124,7 +130,13 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
                 })!
                 
                 microbit = microbits[microbitIndex]
+            } else if stringValue == "@BYE!" {
+                centralManager.cancelPeripheralConnection(peripheral)
+                self.microbit = nil
+                microbits = []
+                
             } else {
+                print("Cancelling \(peripheral.name!)")
                 centralManager.cancelPeripheralConnection(peripheral)
                 
                 if let index = microbits.firstIndex(where: {
@@ -139,6 +151,38 @@ extension MSDOS: CBCentralManagerDelegate, CBPeripheralDelegate {
             }
             break
         case .lift:
+            print("LIFT", stringValue)
+            if stringValue == "Hi im a lift" {
+                
+                print("Magically Connected to \(peripheral.name)")
+                
+                let microbitIndex = microbits.firstIndex(where: {
+                    $0.peripheral == peripheral
+                })!
+                
+                microbit = microbits[microbitIndex]
+                
+                delegate?.didFindLift(microbit: microbit!)
+            } else if stringValue == "thanks! bye!" {
+                // GOOD NIGHT
+                centralManager.cancelPeripheralConnection(peripheral)
+                centralManager.stopScan()
+                delegate?.didFinishLift()
+            } else {
+                
+                print("Killing \(peripheral.name!)")
+                centralManager.cancelPeripheralConnection(peripheral)
+                
+                if let index = microbits.firstIndex(where: {
+                    $0.peripheral.identifier == peripheral.identifier
+                }) {
+                    microbits.remove(at: index)
+                }
+                
+                if let microbit = microbits.first {
+                    centralManager.connect(microbit.peripheral, options: nil)
+                }
+            }
             break
         case .none:
             break

@@ -14,12 +14,18 @@ class ViewController: UIViewController, MSDOSDelegate {
     
     @IBOutlet weak var searchingIndicator: UIImageView!
     
-    let msdos = MSDOS()
+    var msdos: MSDOS!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if msdos == nil {
+            msdos = MSDOS()
+        }
+        
+        statusLabel.accessibilityLabel = "Searching. Head to a GRACE compatible lobby."
+        infomationLabel.accessibilityLabel = ""
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,7 +79,6 @@ class ViewController: UIViewController, MSDOSDelegate {
     }
     
     func didDisconnect() {
-        
         UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [self] in
             statusLabel.alpha = 1
             infomationLabel.alpha = 1

@@ -7,13 +7,15 @@
 
 import UIKit
 
-class FloorSelectionViewController: UIViewController {
+class FloorSelectionViewController: UIViewController, MSDOSDelegate {
     // Setting up outlets
+    @IBOutlet weak var welcomeTitleLabel: UILabel!
     @IBOutlet weak var blockLabel: UILabel!
     @IBOutlet weak var lobbyLabel: UILabel!
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet var keypadButtons: [UIButton]!
     
+    @IBOutlet weak var headerView: UIStackView!
     // Objects that are passed from intialising this VC
     var lobby: Lobby!
     var msdos: MSDOS!
@@ -34,14 +36,43 @@ class FloorSelectionViewController: UIViewController {
         floorLabel.layer.cornerRadius = 20
         floorLabel.layer.masksToBounds = true
         
-        for (n, keypadButton) in keypadButtons.enumerated(){
+        for (n, keypadButton) in keypadButtons.enumerated() {
             keypadButton.tag = n
+            
+            switch n {
+            case 0..<10:
+                // Normal Keys
+                keypadButton.accessibilityLabel = "\(n)"
+                
+            case 10:
+                // Basement
+                keypadButton.accessibilityLabel = "Basement"
+            case 11:
+                // More Button Button pressed
+                //   this is a stupid name
+                keypadButton.accessibilityLabel = "More Options"
+                
+            case 12:
+                // Checkmark/Confirm Selection
+                keypadButton.accessibilityLabel = "Confirm Selection"
+            case 13:
+                // Delete selected
+                keypadButton.accessibilityLabel = "Delete"
+                
+            default: break
+            }
         }
         
         floorLabel.text = targetFloor
         
         blockLabel.text = "Block \(lobby.block)"
-        lobbyLabel.text = "Lobby \(lobby.lobby)"
+        lobbyLabel.text = "Lobby \(lobby.lobby) • \(Int(lobby.lowerboundFloor)) to \(Int(lobby.upperboundFloor))"
+        
+        welcomeTitleLabel.accessibilityLabel = "Welcome to block \(lobby.block), Lobby \(lobby.lobby). Pick a floor from \(Int(lobby.lowerboundFloor)) to \(Int(lobby.upperboundFloor))"
+        blockLabel.accessibilityLabel = ""
+        lobbyLabel.accessibilityLabel = ""
+
+        msdos.delegate = self
     }
     
     @IBAction func commenceRefindingPressed(_ sender: Any) {
@@ -53,7 +84,7 @@ class FloorSelectionViewController: UIViewController {
             dismiss(animated: true)
         })
         
-        self.present(alert, animated:true)
+        self.present(alert, animated: true)
         #warning("need to implement bringing up the Multilobby storyboard")
     }
     
@@ -94,4 +125,8 @@ class FloorSelectionViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    
+    func didDisconnect() {
+        dismiss(animated: true)
+    }
 }

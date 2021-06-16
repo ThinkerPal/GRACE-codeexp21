@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25E1A5312677662F0027C3B0 /* WaitingLiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E1A5302677662F0027C3B0 /* WaitingLiftViewController.swift */; };
+		323AC8152679EF5B006DE39C /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323AC8142679EF5B006DE39C /* Manager.swift */; };
 		3256CDF82677C97A00EF4F6C /* MSDOSDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3256CDF72677C97A00EF4F6C /* MSDOSDelegate.swift */; };
 		327C18412678A3B600716D55 /* FloorSelectionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C18402678A3B600716D55 /* FloorSelectionButtons.swift */; };
 		327C18432678A58200716D55 /* MSDOS+BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C18422678A58200716D55 /* MSDOS+BLE.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		25E1A5302677662F0027C3B0 /* WaitingLiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingLiftViewController.swift; sourceTree = "<group>"; };
+		323AC8142679EF5B006DE39C /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		3256CDF72677C97A00EF4F6C /* MSDOSDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSDOSDelegate.swift; sourceTree = "<group>"; };
 		327C18402678A3B600716D55 /* FloorSelectionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloorSelectionButtons.swift; sourceTree = "<group>"; };
 		327C18422678A58200716D55 /* MSDOS+BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MSDOS+BLE.swift"; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		323AC8162679EF5F006DE39C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				323AC8142679EF5B006DE39C /* Manager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		32D6D16826775F4A00E53AB1 /* Multi Lobby */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		32D6D16926775F5300E53AB1 /* Floor Selection */ = {
 			isa = PBXGroup;
 			children = (
+				323AC8162679EF5F006DE39C /* Manager */,
 				A0D1DA542677D49A00316905 /* FloorSelection.storyboard */,
 				A0604D5C267761A100444469 /* FloorSelectionViewController.swift */,
 				327C18402678A3B600716D55 /* FloorSelectionButtons.swift */,
@@ -243,6 +254,7 @@
 				A0604D492677594A00444469 /* AppDelegate.swift in Sources */,
 				32D6D1742677685600E53AB1 /* Microbit.swift in Sources */,
 				A0604D4B2677594A00444469 /* SceneDelegate.swift in Sources */,
+				323AC8152679EF5B006DE39C /* Manager.swift in Sources */,
 				32D6D172267766CC00E53AB1 /* MSDOS.swift in Sources */,
 				32D6D16F26775F9C00E53AB1 /* Lobby.swift in Sources */,
 				3256CDF82677C97A00EF4F6C /* MSDOSDelegate.swift in Sources */,
