@@ -1,4 +1,13 @@
 # GRACE
+## A new way to interact with elevators
+
+> By **Can I have a breakout room?**
+> - [Rui Yang](https://github.com/thinkerpal/)
+> - [Jia Chen](https://github.com/jiachenyee/)
+> - [Sebastian](http://github.com/SebasChoo04/)
+> - [Xenia](https://github.com/XeniaFiorenza/)
+> - [Cheryl](https://github.com/Cheryl-L/)
+
 This is a code submission for the [Brainhack 2021 CODE_EXP Competition](http://codeexp.tk.sg)
 
 <img src="./appicon.png" width=256/>
