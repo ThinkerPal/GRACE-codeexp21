@@ -8,15 +8,15 @@ This is a code submission for the Brainhack 2021 CODE_EXP Competition
 ## What is GRACE?
 GRACE stands for:
 
- **G**eneral
+ **G**eneral - compatible with many lifts throughout Singapore
 
- **R**emotely
+ **R**emotely - operated directly from users' mobile phones
 
- **A**ccesible
+ **A**ccesible - features cater to the visually impairsed
 
- **C**ontactless
+ **C**ontactless - reduce contact points to decrease risk of disease transmission
 
- **E**levators
+ **E**levators - Elevator!!!
 
 ## Why GRACE?
 ### Problem Statement:
@@ -33,6 +33,15 @@ However, not everyone is able to adapt well to these changes, and certain groups
 
 ### Problem Scope
 > Reducing the risk of disease transmission in public spaces via high contact points such as lift buttons, through an app that allows fully contactless interaction with controls that are accessible to the visually impaired
+
+### Target Audience 
+- Visually Impaired people
+    - These people rely on touch to navigate (eg. by reading Braille or embossed text), leading to a higher risk of disease spread by touching public surfaces
+        - Current measures to reduce contact in public surfaces such as holographic/hover lift buttons are not accessible to these people
+    - Not all are able to navigate using touch, and rely on verbally asking other for help. This is difficult when close contact is discouraged
+        - This results in them being more dependent on others
+- General public
+    - Reduce overall risk of transmission in places like HDB flats, preventing clusters arising from spread of disease through touching public surfaces
 
 ## Technical Details
 
