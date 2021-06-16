@@ -57,7 +57,7 @@ However, not everyone is able to adapt well to these changes, and certain groups
 ### Requirements
 - Xcode 12.5
 - iOS 13 and up
-- Micro:bit v1 or v2
+- 2 micro:bit v1 or v2
 
 ### Technologies used:
 - [BBC micro:bit v2](https://microbit.org)
@@ -75,3 +75,19 @@ However, not everyone is able to adapt well to these changes, and certain groups
 ### Technical Flowchart
 ![Technical Flowchart](./Assets/flowchart.png)
 
+## Deploying GRACE
+1. Clone the repo
+2. Using Xcode 12.5, open the `GRACE.xcodeproj` file.
+    - There are no external packages used for this project
+3. Run it on a **physical** iOS device
+4. Flash the first micro:bit with the `Lift.hex` file. This will be referred to as the `Lift GRACE` from this point.
+5. Flash the second micro:bit with the `Lobby.hex` file. This will be referred to as the `Lobby GRACE` from this point.
+6. The `Lift GRACE` will be placed in the lift and can be distinguished by the radial-style animations
+7. The `Lobby GRACE` will be placed in the lobby and can be distinguished by the square-style animations
+8. Launch the app!
+    - Optionally, 
+        - you can go to Settings > Accessibility > VoiceOver and turn it on.
+        - this will provide you with an experience akin to what someone with visual imparements
+        - swipe left and right to toggle between UI elements and double-tap to select them.
+9. Walk into the lobby with the app open and it would instantly connnect to the `Lobby GRACE` and prompt for which floor to travel to
+10. When a lift arrives, walk in and the app would take about 3s to pair with the `Lift GRACE` and automatically select the floor to head to.
