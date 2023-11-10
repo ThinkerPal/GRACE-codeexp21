@@ -5,7 +5,7 @@
 > - [Rui Yang](https://github.com/thinkerpal/)
 > - [Jia Chen](https://github.com/jiachenyee/)
 > - [Sebastian](http://github.com/SebasChoo04/)
-> - [Xenia](https://github.com/XeniaFiorenza/)
+> - [Xenos](https://github.com/xenosf/)
 > - [Cheryl](https://github.com/Cheryl-L/)
 
 This is a code submission for the [Brainhack 2021 CODE_EXP Competition](http://codeexp.tk.sg)
